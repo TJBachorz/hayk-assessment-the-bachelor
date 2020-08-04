@@ -1,3 +1,12 @@
+require 'pry'
+require 'json'
+#require './spec/fixtures/contestants.json'
+
+file = File.read('./spec/fixtures/contestants.json')
+data = JSON.parse!(file)
+
+puts data["season 19"]
+
 def get_first_name_of_season_winner(data, season)
   # code here
 end
