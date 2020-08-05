@@ -7,14 +7,13 @@ data = JSON.parse(file)
 
 
 def get_first_name_of_season_winner(data, season)
-  winner = data[season].select do |contestant|
+  winner = data[season].select do |contestant| 
     contestant['status'] == "Winner"
   end
   winner[0]['name'].partition(" ").first
 end
 
 def get_contestant_name(data, occupation)
-  person = []
   data.each do |season, info|
     info.select do |contestant| 
       if contestant['occupation'] == occupation
@@ -24,13 +23,21 @@ def get_contestant_name(data, occupation)
   end
 end
 
+
 def count_contestants_by_hometown(data, hometown)
-  # code here
+  residents = 0
+  data.each do |season, info|
+    info.each do |contestants|
+      residents += 1 if contestants['hometown'].include? hometown
+    end
+  end
+  residents
 end
 
-def get_occupation(data, hometown)
-  # code here
-end
+'''def get_occupation(data, hometown)
+  worker = data.select do |contestant| contestant['hometown']
+
+end'''
 
 def get_average_age_for_season(data, season)
   # code here
