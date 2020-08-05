@@ -32,9 +32,18 @@ def get_contestant_name(data, occupation)
     end
   end
 end
+
+
+def count_contestants_by_hometown(data, hometown)
+  residents = 0
+  data.each do |season, info|
+    info.each do |contestant|
+      residents += 1 if contestant['hometown'].include? hometown
+    end
+  end
+  residents
+end
 =end
-
-
 
 def count_contestants_by_hometown(data, hometown)
   residents = 0
