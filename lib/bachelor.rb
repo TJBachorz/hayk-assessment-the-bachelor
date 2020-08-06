@@ -6,13 +6,12 @@ file = File.read('./spec/fixtures/contestants.json')
 data = JSON.parse(file)
 
 
-# INFORMATION RETRIEVAL METHODS ===========
+# INFORMATION RETRIEVAL METHODS ===========s
+
 
 def all_contestants(data)
   contestant_list = []
-  data.each do |season, info|
-    contestant_list.concat(info)
-  end
+  data.select {|season, info| contestant_list.concat(info) }
   contestant_list
 end
  
@@ -46,3 +45,4 @@ def get_average_age_for_season(data, season)
   ages = data[season].map { |info| info['age'] }
   (ages.reduce(0) { |sum, n| sum + n.to_f } / ages.length).round()
 end
+p all_contestants(data)
